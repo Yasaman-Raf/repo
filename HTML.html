@@ -1,0 +1,69 @@
+<Html>
+<link rel="stylesheet" href="Css.css"></link>
+<style>.container{
+    width:1000px;
+    height:50px;
+    background-color:darkgray;
+    margin:0 auto;
+    border-radius:10px;
+     display:grid;
+  }
+  .bar{
+    width:5px;
+    height:50px;
+    background-color:blue;  
+    border-radius:5px;
+  color:white;
+    font-size:20px;
+  
+  text-align:center;
+    
+  }
+  .percent{
+    color: white;
+      margin: 0 auto;
+  }
+  .everything .container:nth-child(even) .bar {
+    background-color:pink;  
+  }</style>
+<script type= "text/javascript" Src="Java.JS"></script>
+<script>let d1=document.querySelector(".everything");
+    for(let i=1;i<=5; i++){
+    d1.insertAdjacentHTML("beforeend",`<div class="container"><div class="bar bar${i}"></div></div>`);
+      /*all progress bars starting at the same time*/
+     let myInterval1= setInterval(function() {progress(document.querySelector(`.bar${i}`), `myInterval${i}`)},1000*i);
+      
+      /* progress bars starting after each other*/
+    //  let myIntervall= setInterval(
+    //    function() {progress(document.querySelector(`.bar1`),i, myIntervall)}
+    // ,100*i);
+    }
+    
+    
+    let progress=function(barname, intervalname){
+      
+      // console.log(intervalname);
+      let currentWidth= barname.offsetWidth;
+      let newWidth= currentWidth+1;
+      let FixedWidth=newWidth/10;
+        barname.innerHTML=FixedWidth.toFixed()+"%";
+    
+      barname.style.width=newWidth+"px";   
+      
+        if (newWidth>=1000){
+           barname.innerHTML="Full";   
+        clearInterval(intervalname);
+    //       let intervalName="myInterval"+barNumber;
+    //       console.log(intervalName);
+    //        let myInterval2= setInterval(
+    //    function() {progress(document.querySelector(`.bar${barNumber}`),barNumber, myInterval2)}
+    // ,100);
+      // }
+    }
+    }
+    </script>
+<Body>
+<div class="everything"></div>
+<p>Hi</p>
+</Body>
+</Html>
